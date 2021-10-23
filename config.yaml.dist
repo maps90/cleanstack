@@ -1,0 +1,11 @@
+mysql:
+  read:
+    host: 127.0.0.1:3306
+    user: api_read
+    password: 
+    database: appointment
+  write:
+    host: 127.0.0.1:3306
+    user: api_write
+    password: 
+    database: appointment
