@@ -11,10 +11,19 @@ import (
 	"github.com/maps90/cleanstack/pkg/transport/httpx"
 )
 
-type AppointmentHandler struct {
+type appointmentHandler struct{}
+
+func init() {
+	appointment := &appointmentHandler{}
+	c := httpx.New()
+
+	ga := c.Group("/internal/appointment")
+	ga.POST("", httpx.NewHandler(appointment.CreateAppointment))
+	ga.PUT("/:identifier", httpx.NewHandler(appointment.RescheduleAppointment))
+	ga.DELETE("/:identifier", httpx.NewHandler(appointment.CancelAppointment))
 }
 
-func (iface *AppointmentHandler) CreateAppointment(c *httpx.Context) (err error) {
+func (iface *appointmentHandler) CreateAppointment(c *httpx.Context) (err error) {
 	ctx := c.GetContext()
 
 	var request *domain.InternalAppointmentRequest
@@ -44,10 +53,10 @@ func (iface *AppointmentHandler) CreateAppointment(c *httpx.Context) (err error)
 	return c.JSONR(http.StatusOK, nil)
 }
 
-func (iface *AppointmentHandler) RescheduleAppointment(c *httpx.Context) error {
+func (iface *appointmentHandler) RescheduleAppointment(c *httpx.Context) error {
 	return nil
 }
 
-func (iface *AppointmentHandler) CancelAppointment(c *httpx.Context) error {
+func (iface *appointmentHandler) CancelAppointment(c *httpx.Context) error {
 	return nil
 }
