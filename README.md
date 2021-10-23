@@ -24,7 +24,7 @@ This project has 4 Domain layer :
 - Usecase Layer
 - Presenter Layer
 
-![clean architecture](https://github.com/maps90/cleanstack/raw/main/clean-archpng)
+![clean architecture](https://github.com/maps90/cleanstack/raw/main/clean-arch.png)
 
 ### Domain Layer
 domain layer will used in all layer. this layer will store any presenter api contract, it also acts as entity / model for the repository.
