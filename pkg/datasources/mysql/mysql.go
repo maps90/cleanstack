@@ -49,6 +49,16 @@ func Init() error {
 	return nil
 }
 
+func New() error {
+	if dbConn == nil {
+		dbConn = &Conn{
+			sqlx: make(map[string]*SQL),
+		}
+	}
+
+	return nil
+}
+
 // get connection in thread-safe fashion
 func (db *Conn) get(id string) *SQL {
 	db.mux.Lock()
